@@ -200,6 +200,16 @@ function MyProfile() {
         {activeTab === "saved" && (
           <SavedPosts />
         )}
+
+        {activeTab === "notifications" && (
+          <div style={{ textAlign: "left" }}>
+            <h4>Notifications</h4>
+            <NotificationsTab/>
+          </div>
+        )}
+
+      
+
       </div>
 
       {/* Posts Modal */}
