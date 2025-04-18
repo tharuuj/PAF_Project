@@ -61,6 +61,9 @@ function PostItem(props) {
   const [Cedit, setCedit] = useState(true);
   const [CurrentCommentitem, setCurrentCommentitem] = useState(null);
   const [CeditComment, setCeditComment] = useState("");
+  const [replyContent, setReplyContent] = useState("");
+  const [replyingToCommentId, setReplyingToCommentId] = useState(null);
+  const [editingReply, setEditingReply] = useState(null);
 
   // Extract or use provided hashtags
   const hashtags = props.hashtags || extractHashtags(props.content);
@@ -97,14 +100,14 @@ function PostItem(props) {
         postId: props.postId
       }
     })
-    .then((res) => {
-      if (res.data.status === "success") {
-        setIsSaved(res.data.payload);
-      }
-    })
-    .catch((err) => {
-      console.error("Error checking if post is saved:", err);
-    });
+      .then((res) => {
+        if (res.data.status === "success") {
+          setIsSaved(res.data.payload);
+        }
+      })
+      .catch((err) => {
+        console.error("Error checking if post is saved:", err);
+      });
   };
 
   function handleLoveClick(e) {
@@ -150,20 +153,20 @@ function PostItem(props) {
   }
 
   function handlePrevImage() {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? props.images.length - 1 : prevIndex - 1
     );
   }
 
   function handleNextImage() {
-    setCurrentImageIndex((prevIndex) => 
+    setCurrentImageIndex((prevIndex) =>
       prevIndex === props.images.length - 1 ? 0 : prevIndex + 1
     );
   }
 
   const handlesave = () => {
     const endpoint = isSaved ? "/api/v1/unsavepost" : "/api/v1/savepost";
-    
+
     axios({
       method: "post",
       url: endpoint,
@@ -175,14 +178,14 @@ function PostItem(props) {
         postId: props.postId
       }
     })
-    .then((res) => {
-      if (res.data.status === "success") {
-        setIsSaved(!isSaved);
-      }
-    })
-    .catch((err) => {
-      console.error("Error saving/unsaving post:", err);
-    });
+      .then((res) => {
+        if (res.data.status === "success") {
+          setIsSaved(!isSaved);
+        }
+      })
+      .catch((err) => {
+        console.error("Error saving/unsaving post:", err);
+      });
   };
 
   const handleEditModalOpen = () => {
@@ -364,7 +367,7 @@ function PostItem(props) {
             )}
           </div>
         </div>
-        
+
         {isMyPost && (
           <div style={{ position: 'relative' }}>
             <button
@@ -383,7 +386,7 @@ function PostItem(props) {
             >
               <RiMoreFill size={20} />
             </button>
-            
+
             {showOptionsMenu && (
               <div style={{
                 position: 'absolute',
@@ -452,8 +455,8 @@ function PostItem(props) {
       }}>
         {props.images && props.images.length > 0 ? (
           <div style={{ height: '100%', width: '100%', position: 'absolute' }}>
-            <img 
-              src={props.images[currentImageIndex]} 
+            <img
+              src={props.images[currentImageIndex]}
               alt="Post content"
               style={{
                 width: '100%',
@@ -462,7 +465,7 @@ function PostItem(props) {
                 position: 'absolute'
               }}
             />
-            
+
             {/* Image counter indicator */}
             {props.images.length > 1 && (
               <div style={{
@@ -479,7 +482,7 @@ function PostItem(props) {
                 {currentImageIndex + 1}/{props.images.length}
               </div>
             )}
-            
+
             {/* Navigation arrows for multiple images */}
             {props.images.length > 1 && (
               <>
@@ -561,7 +564,7 @@ function PostItem(props) {
         borderTop: `1px solid ${colors.border}`
       }}>
         <div style={{ display: 'flex', gap: '18px', flex: 1 }}>
-          <button 
+          <button
             onClick={handleLoveClick}
             style={{
               background: 'transparent',
@@ -582,8 +585,8 @@ function PostItem(props) {
               <RiHeartLine size={22} color={colors.primary} />
             )}
           </button>
-          
-          <button 
+
+          <button
             onClick={handleCommentButtonClick}
             style={{
               background: 'transparent',
@@ -601,8 +604,8 @@ function PostItem(props) {
             <RiMessage2Fill size={22} color={colors.primary} />
           </button>
         </div>
-        
-        <button 
+
+        <button
           onClick={handlesave}
           style={{
             background: 'transparent',
@@ -645,8 +648,8 @@ function PostItem(props) {
         lineHeight: '1.5'
       }}>
         <p style={{ margin: '0' }}>
-          <span style={{ 
-            fontWeight: '600', 
+          <span style={{
+            fontWeight: '600',
             marginRight: '4px',
             color: colors.primary
           }}>
@@ -654,10 +657,10 @@ function PostItem(props) {
           </span>
           <span style={{ color: colors.textDark }}>{props.content}</span>
         </p>
-        
+
         {/* Dynamic Hashtags */}
         {hashtags && hashtags.length > 0 && (
-          <p style={{ 
+          <p style={{
             margin: '6px 0 0 0',
             color: colors.interactive,
             fontSize: '14px'
@@ -666,7 +669,7 @@ function PostItem(props) {
           </p>
         )}
       </div>
-      
+
       {/* View all comments link */}
       {props.commentList && props.commentList.length > 2 && !commentStatus && (
         <div style={{
@@ -674,7 +677,7 @@ function PostItem(props) {
           fontSize: '14px',
           color: colors.textLight
         }}>
-          <button 
+          <button
             onClick={handleCommentButtonClick}
             style={{
               background: 'transparent',
@@ -699,8 +702,8 @@ function PostItem(props) {
         }}>
           {props.commentList.slice(0, 2).map((comment, index) => (
             <p key={index} style={{ margin: '0 0 4px 0' }}>
-              <span style={{ 
-                fontWeight: '600', 
+              <span style={{
+                fontWeight: '600',
                 marginRight: '4px',
                 color: colors.primary
               }}>
@@ -737,7 +740,7 @@ function PostItem(props) {
             padding: '4px 0'
           }}>
             {props.commentList && props.commentList.map((commentItem, index) => (
-              <div 
+              <div
                 key={index}
                 style={{
                   display: 'flex',
@@ -755,11 +758,11 @@ function PostItem(props) {
                 }}>
                   <Hashicon value={commentItem.userId} size={32} />
                 </div>
-                
+
                 <div style={{ flex: 1 }}>
                   <p style={{ margin: '0', fontSize: '14px' }}>
-                    <span style={{ 
-                      fontWeight: '600', 
+                    <span style={{
+                      fontWeight: '600',
                       marginRight: '4px',
                       color: colors.primary
                     }}>
@@ -767,7 +770,7 @@ function PostItem(props) {
                     </span>
                     <span style={{ color: colors.textDark }}>{commentItem.content}</span>
                   </p>
-                  <div style={{ 
+                  <div style={{
                     display: 'flex',
                     gap: '16px',
                     marginTop: '6px',
@@ -777,13 +780,13 @@ function PostItem(props) {
                     <span style={{ cursor: 'pointer' }}>Reply</span>
                     {commentItem.userId === currentUserId && (
                       <>
-                        <span 
+                        <span
                           style={{ cursor: 'pointer' }}
                           onClick={() => handleCommentEdit(commentItem)}
                         >
                           Edit
                         </span>
-                        <span 
+                        <span
                           style={{ cursor: 'pointer', color: colors.danger }}
                           onClick={() => deleteComment(commentItem)}
                         >
@@ -792,7 +795,7 @@ function PostItem(props) {
                       </>
                     )}
                   </div>
-                </div>
+                        </div>
               </div>
             ))}
           </div>
@@ -922,7 +925,7 @@ function PostItem(props) {
                 style={{ minHeight: '100px' }}
               />
             </Form.Group>
-            
+
             <Form.Group className="mb-3">
               <Form.Label>Hashtags (separated by spaces, including #)</Form.Label>
               <Form.Control
@@ -937,7 +940,7 @@ function PostItem(props) {
                 placeholder="#hashtag1 #hashtag2 #hashtag3"
               />
             </Form.Group>
-            
+
             <Form.Group>
               <Form.Label>Images (Comma-separated URLs)</Form.Label>
               <Form.Control
@@ -952,13 +955,13 @@ function PostItem(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button 
-            variant="outline-secondary" 
+          <Button
+            variant="outline-secondary"
             onClick={handleEditModalClose}
           >
             Cancel
           </Button>
-          <Button 
+          <Button
             variant="primary"
             onClick={handleEditSubmit}
             style={{ backgroundColor: '#333333', borderColor: '#333333' }}
@@ -979,13 +982,13 @@ function PostItem(props) {
           <p>Are you sure you want to delete this post? This action cannot be undone.</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button 
-            variant="outline-secondary" 
+          <Button
+            variant="outline-secondary"
             onClick={handleDeleteConfirmClose}
           >
             Cancel
           </Button>
-          <Button 
+          <Button
             variant="danger"
             onClick={deletePost}
           >
