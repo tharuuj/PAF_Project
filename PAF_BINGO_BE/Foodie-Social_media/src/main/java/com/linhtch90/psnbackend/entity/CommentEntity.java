@@ -1,7 +1,8 @@
 package com.linhtch90.psnbackend.entity;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -25,4 +26,6 @@ public class CommentEntity {
     private String content;
 
     private Instant createdAt;
+
+    private List<ReplyEntity> replies = new ArrayList<>();
 }
