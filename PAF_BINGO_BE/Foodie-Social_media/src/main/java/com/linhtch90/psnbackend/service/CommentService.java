@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.linhtch90.psnbackend.entity.CommentEntity;
-import com.linhtch90.psnbackend.entity.IdObjectEntity;
 import com.linhtch90.psnbackend.entity.PostEntity;
-import com.linhtch90.psnbackend.entity.UserEntity;
+import com.linhtch90.psnbackend.entity.ReplyEntity;
 import com.linhtch90.psnbackend.repository.CommentRepository;
 import com.linhtch90.psnbackend.repository.PostRepository;
 
@@ -25,6 +24,9 @@ public class CommentService {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     public ResponseObjectService insertComment(CommentEntity inputComment, String inputPostId) {
         ResponseObjectService responseObj = new ResponseObjectService();
@@ -45,6 +47,15 @@ public class CommentService {
             commentList.add(inputComment);
             targetPost.setComment(commentList);
             postService.updatePostByComment(targetPost);
+            notificationService.createNotification(
+                targetPost.getUserId(),
+                inputComment.getUserId(),
+                inputComment.getUserFullname(),
+                targetPost.getId(),
+                inputComment.getId(),
+                "COMMENT",
+                "commented on your post."
+            );
             responseObj.setStatus("success");
             responseObj.setMessage("success");
             responseObj.setPayload(inputComment);
