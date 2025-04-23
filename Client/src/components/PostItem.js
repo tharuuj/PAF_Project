@@ -314,6 +314,48 @@ function PostItem(props) {
 
   const isMyPost = props.userId === currentUserId;
 
+  // Define handleReplyContentChange to update replyContent state
+  function handleReplyContentChange(e) {
+    setReplyContent(e.target.value);
+  }
+
+  // Define sendReply to handle sending replies
+  function sendReply(id) {
+    console.log("Sending reply:", replyContent, replyingToCommentId);
+   if (!replyContent.trim() ) return; // Prevent empty replies or undefined commentId
+
+
+    axios({
+      method: "post",
+      url: `/api/v1/addreply/${id}`,
+      headers: {
+        Authorization: localStorage.getItem("psnToken"),
+      },
+      data: {
+        userId: localStorage.getItem("psnUserId"),
+        userFullname:
+          localStorage.getItem("psnUserFirstName") +
+          " " +
+          localStorage.getItem("psnUserLastName"),
+        content: replyContent,
+      },
+    })
+      .then(() => {
+        setReplyContent("");
+        setReplyingToCommentId(null);
+        window.location.reload();
+      })
+      .catch((err) => console.error("Error adding reply:", err));
+  }
+
+  function handleReplyClick(commentId) {
+    if (replyingToCommentId === commentId) {
+      setReplyingToCommentId(null); // Disable reply mode if already active
+    } else {
+      setReplyingToCommentId(commentId); // Enable reply mode for the selected comment
+    }
+  }
+
   return (
     <div style={{
       background: colors.background,
@@ -743,7 +785,7 @@ function PostItem(props) {
               <div
                 key={index}
                 style={{
-                  display: 'flex',
+                  display: 'block',
                   marginBottom: '16px',
                   position: 'relative'
                 }}
