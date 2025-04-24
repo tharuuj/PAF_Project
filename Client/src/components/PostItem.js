@@ -819,7 +819,14 @@ function PostItem(props) {
                     fontSize: '12px',
                     color: colors.textLight
                   }}>
-                    <span style={{ cursor: 'pointer' }}>Reply</span>
+                    <span
+                      style={{ cursor: 'pointer', color: commentItem.replies?.length > 0 ? 'gray' : 'blue' }}
+                      onClick={() => {
+                        if (!commentItem.replies?.length) handleReplyClick(commentItem.id);
+                      }}
+                    >
+                      Reply
+                    </span>
                     {commentItem.userId === currentUserId && (
                       <>
                         <span
