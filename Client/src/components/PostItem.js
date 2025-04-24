@@ -844,7 +844,91 @@ function PostItem(props) {
                       </>
                     )}
                   </div>
+                </div>
+                {/* Replies section */}
+                {commentItem.replies && commentItem.replies.length > 0 && (
+                  <div style={{
+                    marginTop: '12px',
+                    paddingLeft: '16px',
+                    borderLeft: `1px solid ${colors.border}`
+                  }}>
+                    {commentItem.replies.map((reply) => (
+                      <div key={reply.id} style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        marginBottom: '8px'
+                      }}>
+                        <div style={{
+                          width: '24px',
+                          height: '24px',
+                          borderRadius: '50%',
+                          overflow: 'hidden',
+                          marginRight: '8px',
+                          border: `1px solid ${colors.border}`
+                        }}>
+                          <Hashicon value={reply.userId} size={24} />
                         </div>
+                        <div style={{ flex: 1 }}>
+                          <p style={{ margin: '0', fontSize: '14px' }}>
+                            <span style={{
+                              fontWeight: '600',
+                              marginRight: '4px',
+                              color: colors.primary
+                            }}>
+                              {reply.userFullname.split(' ')[0]}
+                            </span>
+                            <span style={{ color: colors.textDark }}>{reply.content}</span>
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Reply input */}
+                {replyingToCommentId === commentItem.id && (
+                  <div style={{
+                    marginTop: '8px',
+                    display: 'flex',
+                    alignItems: 'center'
+                  }}>
+                    <input
+                      type="text"
+                      placeholder="Write a reply..."
+                      value={replyContent}
+                      onChange={handleReplyContentChange}
+                      style={{
+                        flex: 1,
+                        border: `1px solid ${colors.border}`,
+                        borderRadius: '4px',
+                        padding: '8px',
+                        fontSize: '14px',
+                        marginRight: '8px',
+                        outline: 'none',
+                        color: colors.primary
+                      }}
+                    />
+                    <button
+                      onClick={() => sendReply(commentItem.id)}
+                      style={{
+                        padding: '8px 16px',
+                        backgroundColor: colors.primary,
+                        border: 'none',
+                        color: 'white',
+                        borderRadius: '4px',
+                        fontSize: '14px',
+                        cursor: 'pointer',
+                        fontWeight: '500',
+                        transition: 'background-color 0.2s'
+                      }}
+                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.secondary}
+                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                    >
+                      Send
+                    </button>
+                  </div>
+                )}
+
               </div>
             ))}
           </div>
