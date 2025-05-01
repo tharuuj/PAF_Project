@@ -14,7 +14,6 @@ import com.linhtch90.psnbackend.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class PostService {
@@ -22,6 +21,8 @@ public class PostService {
     private PostRepository postRepo;
     @Autowired
     private UserRepository userRepo;
+    @Autowired
+    private NotificationService notificationService;
     public ResponseObjectService findAll() {
         ResponseObjectService responseObj = new ResponseObjectService();
         responseObj.setPayload(postRepo.findAll());
@@ -243,11 +244,25 @@ public class PostService {
             // love and unlove a post
             if (!loveList.contains(doubleId.getId2())) {
                 loveList.add(doubleId.getId2());
+
+                UserEntity user1 = userRepo.findById(doubleId.getId2()).get();
+                String fullName = user1.getFirstName() + " " + user1.getLastName(); 
+
+                notificationService.createNotification(
+                    targetPost.getUserId(),
+                    doubleId.getId2(),
+                    fullName,
+                    targetPost.getId(),
+                    null,
+                    "LIKE",
+                    "liked your post."
+                );
             } else {
                 loveList.remove(doubleId.getId2());
             }
             targetPost.setLove(loveList);
             postRepo.save(targetPost);
+            
             responseObj.setStatus("success");
             responseObj.setMessage("update love to the target post id: " + targetPost.getId());
             responseObj.setPayload(targetPost);
