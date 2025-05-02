@@ -16,6 +16,7 @@ function PostCompose({ onPostComplete }) {
   const storeFollowingPosts = useSelector((state) => state.followingPostReducer.followingPosts);
 
   // Professional color palette
+  // color palette
   const colors = {
     primary: '#333333', // Dark grey
     secondary: '#555555', // Medium grey
