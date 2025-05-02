@@ -13,7 +13,7 @@ function FollowerList() {
   );
   const [animationProgress, setAnimationProgress] = useState(0);
 
-  // Blue theme constants
+  // Blue theme constant
   const colors = {
     white: "#FFFFFF",
     lightBlue: "#E6F0FF",
