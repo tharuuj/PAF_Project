@@ -6,6 +6,9 @@ import { getProfileId } from "../feature/checkProfile/checkProfileSlice";
 import { followAccount } from "../feature/followingAccounts/followingAccountSlice";
 import { Check, UserPlus } from "lucide-react";
 
+
+//Add FollowerAccountItem component
+
 function FollowerAccountItem(props) {
   const dispatch = useDispatch();
   const selectedProfileId = useSelector(
