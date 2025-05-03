@@ -15,7 +15,7 @@ public class UnAuthorizedUserAuthenticationEntryPoint implements AuthenticationE
     public void commence(HttpServletRequest request, HttpServletResponse response,
             org.springframework.security.core.AuthenticationException authException)
             throws IOException, ServletException {
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized user");
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized User");
 
     }
 }
