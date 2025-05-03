@@ -14,3 +14,4 @@ public interface SavedPostRepository extends MongoRepository<SavedPostEntity, St
     void deleteByUserIdAndPostId(String userId, String postId);
     boolean existsByUserIdAndPostId(String userId, String postId);
 }
+
