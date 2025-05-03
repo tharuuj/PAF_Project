@@ -8,7 +8,6 @@ import { Check, UserPlus } from "lucide-react";
 
 
 //Add FollowerAccountItem component
-
 function FollowerAccountItem(props) {
   const dispatch = useDispatch();
   const selectedProfileId = useSelector(
