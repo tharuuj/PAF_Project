@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-//
+
 public class PostByFollowing {
     private UserEntity user;
     private PostEntity post;
