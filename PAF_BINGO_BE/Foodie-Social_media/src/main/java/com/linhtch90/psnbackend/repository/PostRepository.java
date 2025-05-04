@@ -7,7 +7,6 @@ import com.linhtch90.psnbackend.entity.PostEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-//Post Repo
 
 @Repository
 public interface PostRepository extends MongoRepository<PostEntity, String> {
