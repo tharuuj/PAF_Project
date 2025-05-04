@@ -197,6 +197,8 @@ function SignIn() {
             </p>
           </div>
 
+          
+
           {/* Right Static Image */}
           <div style={{
             flex: 1,
