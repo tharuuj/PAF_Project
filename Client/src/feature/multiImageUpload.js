@@ -47,6 +47,7 @@ function MultiImageUpload(props) {
                 } catch (error) {
                     console.error("Error compressing image:", error);
                 }
+                
             } else {
                 // For videos, just convert to base64 without compression
                 try {
