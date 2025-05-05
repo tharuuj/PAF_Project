@@ -14,5 +14,4 @@ public interface UserRepository extends MongoRepository<UserEntity, String> {
     Optional<UserEntity> findByEmail(String email);
     @Query("{ '_id' : ?0 }")
     void updateBio(String id, String bio);
-
 }
