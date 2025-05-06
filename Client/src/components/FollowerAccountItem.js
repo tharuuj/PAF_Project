@@ -101,7 +101,7 @@ function FollowerAccountItem(props) {
           disabled={tickIconStatus}
           style={{
             background: tickIconStatus
-              ? 'linear-gradient(to right, #003580, #0056D2)' // strong blue when already followed
+              ? 'linear-gradient(to right, #003580, #0056D2)' // strong  blue when already followed
               : 'linear-gradient(to right, #007bff, #0056D2)', // lighter blue for follow button
             color: 'white',
             fontWeight: 'bold',
