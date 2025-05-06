@@ -27,8 +27,10 @@ function GoogleAuth({ handleAuth }) {
                 Continue with Google
             </div>
 
-            {/* <button onClick={handleClick}>Signin With Google</button> */}
+            {/* <button onClick={handleClick}>Signin With Google</button> */}   
         </div>
     );
 }
 export default GoogleAuth;
+
+//fix error
