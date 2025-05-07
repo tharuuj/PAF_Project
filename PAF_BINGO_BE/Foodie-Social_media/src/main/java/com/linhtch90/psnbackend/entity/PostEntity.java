@@ -40,4 +40,5 @@ public class PostEntity {
     List<String> share = new ArrayList<>();
 
     List<CommentEntity> comment = new ArrayList<>();
+    
 }
