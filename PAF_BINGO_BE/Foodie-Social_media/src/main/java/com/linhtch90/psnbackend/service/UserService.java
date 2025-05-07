@@ -229,6 +229,7 @@ public class UserService implements UserDetailsService {
     public ResponseObjectService followUser(DoubleIdObjectEntity doubleId) {
         // id1 - followed user, id2 - follower
 
+        
         ResponseObjectService responseObj = new ResponseObjectService();
         Optional<UserEntity> optFollowedUser = userRepo.findById(doubleId.getId1());
         Optional<UserEntity> optFollower = userRepo.findById(doubleId.getId2());
