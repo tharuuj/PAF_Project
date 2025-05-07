@@ -51,4 +51,18 @@ public class CommentController {
         return new ResponseEntity<ResponseObjectService>(commentService.deleteUserComment(inputComment, inputPostId.getId()), HttpStatus.OK);
     }
 
+    @PostMapping("/addreply/{parentCommentId}")
+    public ResponseEntity<ResponseObjectService> addReply(@PathVariable String parentCommentId, @RequestBody CommentEntity reply) {
+        return new ResponseEntity<>(commentService.addReply(parentCommentId, reply), HttpStatus.OK);
+    }
+
+    @PutMapping("/editreply")
+    public ResponseEntity<ResponseObjectService> editReply(@RequestBody CommentEntity reply) {
+        return new ResponseEntity<>(commentService.editReply(reply), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deletereply/{parentCommentId}/{replyId}")
+    public ResponseEntity<ResponseObjectService> deleteReply(@PathVariable String parentCommentId, @PathVariable String replyId) {
+        return new ResponseEntity<>(commentService.deleteReply(parentCommentId, replyId), HttpStatus.OK);
+    }
 }

@@ -11,7 +11,6 @@ import com.linhtch90.psnbackend.entity.IdObjectEntity;
 import com.linhtch90.psnbackend.entity.UserEntity;
 import com.linhtch90.psnbackend.repository.UserRepository;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -176,7 +175,7 @@ public class UserService implements UserDetailsService {
 
     public ResponseObjectService update(UserEntity inputUser) {
         ResponseObjectService responseObj = new ResponseObjectService();
-        Optional<UserEntity> optUser = userRepo.findById(inputUser.getId());
+        // Optional<UserEntity> optUser = userRepo.findById(inputUser.getId());
         System.out.println("job");
         String id = inputUser.getId();
         try{
@@ -222,7 +221,7 @@ public class UserService implements UserDetailsService {
     public ResponseObjectService reupdate(UserEntity inputUser) {
         System.out.println("job");
         ResponseObjectService responseObj = new ResponseObjectService();
-        Optional<UserEntity> optUser = userRepo.findById(inputUser.getId());
+        // Optional<UserEntity> optUser = userRepo.findById(inputUser.getId());
         return responseObj;
     }
 

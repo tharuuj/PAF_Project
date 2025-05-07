@@ -10,6 +10,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Utensils, BookOpen, Pencil, UserX, Image, MapPin, Briefcase, Globe } from 'lucide-react';
+import NotificationsTab from "./Notifcation";
 
 function MyProfile() {
   const navigate = useNavigate();
@@ -151,7 +152,7 @@ function MyProfile() {
 
         {/* Tabs */}
         <div style={{ margin: "20px 0", borderBottom: "2px solid #dee2e6", display: "flex", justifyContent: "center", gap: "30px" }}>
-          {["posts", "about", "saved"].map(tab => (
+          {["posts", "about", "saved", "notifications"].map(tab => (
             <div key={tab}
               onClick={() => setActiveTab(tab)}
               style={{
@@ -199,6 +200,16 @@ function MyProfile() {
         {activeTab === "saved" && (
           <SavedPosts />
         )}
+
+        {activeTab === "notifications" && (
+          <div style={{ textAlign: "left" }}>
+            <h4>Notifications</h4>
+            <NotificationsTab/>
+          </div>
+        )}
+
+      
+
       </div>
 
       {/* Posts Modal */}
