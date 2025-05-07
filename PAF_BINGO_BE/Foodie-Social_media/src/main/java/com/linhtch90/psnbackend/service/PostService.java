@@ -42,6 +42,7 @@ public class PostService {
         try {
             System.out.println("deleteUserPost " + id.getId());
 
+            
             // Check if post exists before deleting
             Optional<PostEntity> optPost = postRepo.findById(id.getId());
             if (optPost.isPresent()) {
