@@ -75,7 +75,6 @@ function PostItem(props) {
   }
 
 
-
   function sendComment(e) {
     dispatch(
       addComment({
