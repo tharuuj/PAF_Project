@@ -87,7 +87,8 @@ function SavedPosts() {
 
       if (response.data && response.data.status === "success") {
         showSuccessMessage("Post removed from saved posts");
-        // Remove the post from the local state
+      
+          // Remove the post from the local state
         setSavedPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
       } else {
         showFailMessage("Failed to remove post from saved posts");
