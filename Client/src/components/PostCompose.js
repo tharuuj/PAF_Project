@@ -49,7 +49,7 @@ function PostCompose({ onPostComplete }) {
     color: colors.primary
   });
   
-  // Post type options - updated with grayscale colors
+  //Post type options - updated with grayscale colors
   const postTypes = [
     {
       id: "insight",
