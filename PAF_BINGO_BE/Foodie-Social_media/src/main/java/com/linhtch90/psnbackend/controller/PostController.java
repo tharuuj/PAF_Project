@@ -117,4 +117,5 @@ public class PostController {
     public ResponseEntity<ResponseObjectService> getFollowingProgress(@RequestBody IdObjectEntity userId) {
         return new ResponseEntity<>(postService.getFollowingProgress(userId), HttpStatus.OK);
     }
+    
 }
