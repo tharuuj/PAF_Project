@@ -41,6 +41,6 @@ jobs:
 
     - name: Build Frontend
       run: |
-        cd PAF_BINGO_FE/Foodie-FE
+        cd PAF_BINGO_FE/Client
         npm install
         npm run build
