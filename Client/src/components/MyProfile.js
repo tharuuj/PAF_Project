@@ -10,7 +10,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { Utensils, BookOpen, Pencil, UserX, Image, MapPin, Briefcase, Globe } from 'lucide-react';
-import NotificationsTab from "./Notifcation";
+import NotificationsTab from "./Notification";
 
 function MyProfile() {
   const navigate = useNavigate();
