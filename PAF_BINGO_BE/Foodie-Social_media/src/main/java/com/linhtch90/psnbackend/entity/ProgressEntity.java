@@ -36,4 +36,5 @@ public class ProgressEntity {
     private Instant createdAt;
 
     private Instant updatedAt;
+    
 }
