@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8e6d642-ffe4-4d8a-891c-d9e9620e9641" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/src/components/MyProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/src/components/MyProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/src/components/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/src/components/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/src/components/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/src/components/SignUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Client/src/components/googleAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Client/src/components/googleAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/PAF_BINGO_BE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/PAF_BINGO_BE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="d8e6d642-ffe4-4d8a-891c-d9e9620e9641" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,9 +26,9 @@
     "Application.PsnBackendApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Rebasing content-sharing",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tharu/OneDrive/Documents/GitHub/PAF_Project/PAF_BINGO_BE/Foodie-Social_media"
+    "last_opened_file_path": "C:/Users/Tharu/OneDrive - Sri Lanka Institute of Information Technology/My projects/PAF new/PAF_BINGO_BE/Foodie-Social_media"
   }
 }]]></component>
   <component name="RunManager">
