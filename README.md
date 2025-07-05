@@ -7,5 +7,5 @@ This project is an interactive skill-sharing and learning platform focused on co
 
 <img src="https://github.com/user-attachments/assets/8ec149b3-e1f9-42a9-9040-d44094a55381" alt="paf1user" width="400">
 
-<img src="https://github.com/user-attachments/assets/77780e82-0954-4a79-acc5-b35e73165465" alt="paf2content" width="600">
+<img src="https://github.com/user-attachments/assets/77780e82-0954-4a79-acc5-b35e73165465" alt="paf2content" width="800">
 
